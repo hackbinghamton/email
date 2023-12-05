@@ -1,0 +1,10 @@
+{
+  "name": "email",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hackbinghamton/email",
+  "private": true,
+  "license": "ISC",
+  "dependencies": {
+    "mjml": "^4.14.1"
+  }
+}

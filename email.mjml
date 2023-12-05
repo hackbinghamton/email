@@ -1,0 +1,90 @@
+<mjml>
+  <!-- TODO: font? -->
+  <!-- https://www.caniemail.com/ -->
+  <!-- https://blog.edmdesigner.com/html-email-width-overcoming-the-600px-limitation/ -->
+  <mj-head>
+    <mj-attributes>
+      <!-- Rely on the parent to provide padding. -->
+      <mj-text padding="0" color="#222" />
+    </mj-attributes>
+    <mj-style inline="inline">
+      p {
+      line-height: 1.5;
+      }
+
+      .outer-wrapper {
+      /* Make the background image span the page. */
+      max-width: 800px !important;
+      }
+
+      .outer-wrapper > div > table > tbody > tr > td {
+        /* Add padding to the whole page. */
+        padding: 60px 0 0 !important;
+      }
+
+      .content, .footer {
+        /* Set the width of the actual page contents. */
+        max-width: 575px !important;
+      }
+    </mj-style>
+    <mj-style>
+      /* TODO: Find a way to make these take effect. */
+
+      /* On smaller screens, disable the rounded borders. */
+      @media only screen and (max-width:575px) {
+      .content > table > tbody > tr > td {
+      padding: 2px 0 0 !important;
+      }
+
+      .content, .content-inner > table > tbody > tr > td {
+      border-radius: 0px !important;
+      }
+      /* TODO: Consider making the footer white in this scenario. */
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#e2e8f0">
+    <!-- Instead of padding here, use margin on `.content`. -->
+    <mj-wrapper background-color="#005A43" background-url="https://hackbu.org/img/email/banner1-min.jpg" background-size="100%" background-repeat="no-repeat" css-class="outer-wrapper">
+      <!--
+        Solid round borders don't work, so fake them using this trick:
+        https://github.com/mjmlio/mjml/issues/1104#issuecomment-377245485
+        To get the border right, see this article:
+        https://www.30secondsofcode.org/css/s/nested-border-radius/
+        This radius is R2, and this padding is D.
+        -->
+      <mj-section border-radius="20px" padding="2px" background-color="#005A43" css-class="content">
+        <!-- This radius is R1. -->
+        <mj-column border-radius="18px" background-color="white" padding="0 25px 10px" css-class="content-inner">
+          <mj-text>
+            <h1>
+              Meet the Innovators of Binghamton University
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac hendrerit ex. Proin laoreet nunc vel purus pellentesque blandit. Duis ultricies pellentesque magna, id molestie ex convallis eget. Mauris quis tellus ipsum. Aenean imperdiet ultricies felis vel tempus. Vivamus tempus nulla ipsum, vitae cursus felis condimentum sit amet. Morbi sollicitudin nisi ut turpis tincidunt euismod. Fusce nec arcu eros. Morbi aliquet tristique imperdiet. In hac habitasse platea dictumst. In eget euismod tortor, in ultricies mi. Etiam nisl nulla, tincidunt vel nisl sed, vehicula malesuada massa. Curabitur accumsan maximus lorem, in viverra orci varius ac. Sed ut porta massa. Maecenas eget sem magna. Aliquam fermentum bibendum sodales.
+            </p>
+          </mj-text>
+          <!-- TODO: Make call to action button. -->
+        </mj-column>
+      </mj-section>
+      <mj-section css-class="footer">
+      <mj-group>
+        <mj-column vertical-align="middle">
+          <mj-text color="#e2e8f0" padding="0 2px">
+            <p style="margin: 0">
+              © 2023 <a style="color: #e2e8f0" href="https://hackbu.org">HackBU</a>
+              <br />
+              <!-- TODO: Get the correct address. -->
+              4400 Vestal Pkwy E, Vestal, NY 13850.
+            </p>
+          </mj-text>
+        </mj-column>
+        <mj-column vertical-align="middle">
+          <mj-image align="right" src="https://hackbu.org/img/email/logo-min.png" width="150px" padding="0 2px" href="https://hackbu.org" />
+        </mj-column>
+      </mj-group>
+      </mj-section>
+      </mj-wrapper>
+    </mj-wrapper>
+  </mj-body>
+</mjml>
